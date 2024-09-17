@@ -1,3 +1,5 @@
+#define LINUX
+#define X86_64
 #include "dr_api.h"
 
 void dr_init(client_id_t id) {
