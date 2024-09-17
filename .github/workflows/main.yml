@@ -23,16 +23,15 @@ jobs:
         export PATH=$PATH:$DYNAMORIO_HOME/bin64
     - name: Verify dr_api.h exists
       run: |
-        echo "$DYNAMORIO_HOME"
-        # if [ ! -f $DYNAMORIO_HOME/include/dr_api.h ]; then
-        #   echo "ERROR: dr_api.h not found!"
-        #   exit 1
-        # else
-        #   echo "dr_api.h found successfully."
-        # fi
+        if [ ! -f ./DynamoRIO-Linux-10.93.19944/include/dr_api.h ]; then
+          echo "ERROR: dr_api.h not found!"
+          exit 1
+        else
+          echo "dr_api.h found successfully."
+        fi
     - name: Compile Target Program
       run: |
-        gcc -o simple_target simple_client.c -I$DYNAMORIO_HOME/include -L$DYNAMORIO_HOME/lib64 -ldynamorio
+        gcc -o simple_target simple_client.c -I ./DynamoRIO-Linux-10.93.19944/include -L ./DynamoRIO-Linux-10.93.19944/lib64 -ldynamorio
 
     - name: Set executable permissions
       run: |
