@@ -23,6 +23,7 @@ jobs:
         export PATH=$PATH:$DYNAMORIO_HOME/bin64
     - name: Verify dr_api.h exists
       run: |
+        echo $DYNAMORIO_HOME
         if [ ! -f $DYNAMORIO_HOME/include/dr_api.h ]; then
           echo "ERROR: dr_api.h not found!"
           exit 1
