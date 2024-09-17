@@ -21,12 +21,15 @@ jobs:
         tar -xzf DynamoRIO-Linux-10.93.19944.tar.gz
         export DYNAMORIO_HOME=$PWD/DynamoRIO-Linux-10.93.19944
         export PATH=$PATH:$DYNAMORIO_HOME/bin64
-
-    - name: Compile Client
+    - name: Compile Target Program
       run: |
-        ./DynamoRIO-Linux-10.93.19944/bin64/drrun -c ./simple_client.c -- ./simple_target
+        gcc -o simple_target simple_target.c
+
+    - name: Set executable permissions
+      run: |
+        chmod +x ./simple_target
 
     - name: Run Client
       run: |
-        ./DynamoRIO-Linux-10.93.19944/bin64/drrun -c ./simple_client -- ./simple_target
+        ./DynamoRIO-Linux-10.93.19944/bin64/drrun -- ./simple_target
 
