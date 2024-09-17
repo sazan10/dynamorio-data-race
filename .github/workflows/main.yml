@@ -23,7 +23,7 @@ jobs:
         export PATH=$PATH:$DYNAMORIO_HOME/bin64
     - name: Compile Target Program
       run: |
-        gcc -o simple_target simple_target.c
+        gcc -o simple_target simple_client.c
 
     - name: Set executable permissions
       run: |
