@@ -31,7 +31,7 @@ jobs:
         fi
     - name: Compile Target Program
       run: |
-        gcc -o simple_target simple_client.c -I./DynamoRIO-Linux-10.93.19944/include -L./DynamoRIO-Linux-10.93.19944/lib64 -ldynamorio
+        gcc -o simple_target simple_client.c -IDynamoRIO-Linux-10.93.19944/include -LDynamoRIO-Linux-10.93.19944/lib64 -ldynamorio
 
     - name: Set executable permissions
       run: |
