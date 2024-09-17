@@ -19,13 +19,14 @@ jobs:
       run: |
         wget https://github.com/DynamoRIO/dynamorio/releases/download/cronbuild-10.93.19944/DynamoRIO-Linux-10.93.19944.tar.gz
         tar -xzf DynamoRIO-Linux-10.93.19944.tar.gz
-        export DYNAMORIO_DIR=$(pwd)/DynamoRIO-Linux-10.93.19944
-        echo "DynamoRIO directory: $DYNAMORIO_DIR"
+        export DYNAMORIO_HOME=$PWD/DynamoRIO-Linux-10.93.19944
+        export PATH=$PATH:$DYNAMORIO_HOME/bin64
 
     - name: Compile Client
       run: |
-        $DYNAMORIO_DIR/bin64/drrun -c ./simple_client.c -- ./simple_target
+        $DYNAMORIO_HOME/bin64/drrun -c ./simple_client.c -- ./simple_target
 
     - name: Run Client
       run: |
-        $DYNAMORIO_DIR/bin64/drrun -c ./simple_client -- ./simple_target
+        $DYNAMORIO_HOME/bin64/drrun -c ./simple_client -- ./simple_target
+
