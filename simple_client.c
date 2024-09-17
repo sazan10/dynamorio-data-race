@@ -1,14 +1,12 @@
 #define LINUX
 #define X86_64
 #include "dr_api.h"
+#include "dr_defines.h"
+#include "dr_ir_instr.h"  // This header might contain the necessary function declarations
 
-void dr_init(client_id_t id) {
-    instr_t *instr;
-    instr = INSTR_CREATE_add_vector(drcontext,
-                                    opnd_create_reg(DR_REG_V0),  // Incorrect
-                                    opnd_create_reg(DR_REG_V1),  // Incorrect
-                                    opnd_create_reg(DR_REG_V2),  // Incorrect
-                                    OPND_CREATE_SINGLE());
+void dr_init(void) {
+    drcontext_t *drcontext;  // Assuming drcontext is of type drcontext_t
 
-    dr_fprintf(STDERR, "Created instruction\n");
+    // Verify the correct function name and parameters in DynamoRIO documentation
+    instr = INSTR_CREATE_add(drcontext, OPND_CREATE_INT16());  // Adjust function and parameters as needed
 }
