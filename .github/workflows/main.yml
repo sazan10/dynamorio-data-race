@@ -24,9 +24,9 @@ jobs:
 
     - name: Compile Client
       run: |
-        $DYNAMORIO_HOME/bin64/drrun -c ./simple_client.c -- ./simple_target
+        ./DynamoRIO-Linux-10.93.19944/bin64/drrun -c ./simple_client.c -- ./simple_target
 
     - name: Run Client
       run: |
-        $DYNAMORIO_HOME/bin64/drrun -c ./simple_client -- ./simple_target
+        ./DynamoRIO-Linux-10.93.19944/bin64/drrun -c ./simple_client -- ./simple_target
 
